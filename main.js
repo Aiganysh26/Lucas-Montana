@@ -8,48 +8,44 @@ const pics = [
   'https://images.unsplash.com/photo-1469334031218-e382a71b716b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
 ]
 
-for (let i = 0; i < pics.length; i++) {
-    const img = document.createElement('img')
-    img.setAttribute('src', `${pics[i]}`)
+const gallery = document.querySelector('.images')
+const overlayImg = document.querySelector('.overlay-img')
+const modalImg = document.querySelector('.modal-img')
+const closeBtn = document.querySelector('.close-btn-img')
 
-    img.addEventListener('click', (e) => {
-      overlay.classList.add('open-img')
-    const modalImg = document.createElement('img')
-    modalImg.setAttribute('src', e.target.getAttribute('src'))
-    modalImg.className = 'modal-img'
-    document.querySelector('.overlay-img').append(modalImg)
 
-  closeBtnImg.addEventListener('click', () => {
-    overlay.classList.remove('open-img')
-    modalImg.remove()
- })
-    })
-    document.querySelector('.images').append(img) 
+const createImg = (src) => {
+  const img = document.createElement('img')
+  img.setAttribute('src', src)
+  return img
 }
 
-const wrapper = document.createElement('div')
-div.className = 'image-container'
-const img = document.createElement('img')
-wrapper.append(img)
+pics.forEach((imgSrc) => {
+  const imgForGallery = createImg(imgSrc)
+  const imgForModal = createImg(imgSrc)
 
-const images = document.querySelector('.images')
-const overlay = document.querySelector('.overlay-img')
-const closeBtnImg = document.querySelector('.close-btn-img')
-const modal = document.querySelector('.modal')
-
-
-
+  imgForGallery.addEventListener('click', () => {
+    overlayImg.classList.add('open-img')
+    modalImg.append(imgForModal)
+  })
+  
+    gallery.append(imgForGallery)
+})
+closeBtn.addEventListener('click', () => {
+  overlayImg.classList.remove('open-img')
+  modalImg.querySelector('img').remove()
+})
 
 
 const openBtn = document.querySelector('#openModal')
-const closeBtn = document.querySelector('#closeBtn')
+const closeModal = document.querySelector('#closeBtn')
 const overlayForm = document.querySelector('.overlay-modal')
 
 openBtn.addEventListener('click', () => {
   overlayForm.classList.add('open-modal-form')
 })
 
-closeBtn.addEventListener('click', () => {
+closeModal.addEventListener('click', () => {
   overlayForm.classList.remove('open-modal-form')
 })
 
@@ -67,53 +63,3 @@ sendBtn.addEventListener('click', () => {
   }
   console.log(getMessage)
 })
-
-
-
-
-
-
-
-
-
-
-// overlay.addEventListener('click', () => {
-//   overlay.classList.remove('open')
-// })
-
-// modal.addEventListener('click', (e) => {
-//   e.stopPropagation()
-// })
-
-// const images = document.querySelector('.images')
-// const overlay = document.querySelector('.overlay')
-// const modal = document.querySelector('.modal')
-// const closeBtn = document.querySelector('button')
-
-// const createImg = (src) => {
-//   const img = document.createElement('img')
-//   img.setAttribute('src', src)
-//   return img
-// }
-
-
-// pics.forEach((imgSrc) => {
-//   const imgForGallery = createImg(imgSrc)
-//   const imgForModal = createImg(imgSrc)
-
-//   imgForGallery.addEventListener('click', () => {
-//     overlay.classList.add('open')
-//     modal.append(imgForModal)
-//   })
-
-//   imgForGallery.append(imgForGallery)
-// })
-
-// closeBtn.addEventListener('click', () => {
-//   overlay.classList.remove('open')
-//   modal.querySelector('img').remove()
-// })
-
-
-
-

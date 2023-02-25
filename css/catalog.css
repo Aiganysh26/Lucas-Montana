@@ -122,8 +122,8 @@ img {
 }
 .close-btn-img {
  position: absolute;
-  top: -25px;
-  left: 230px;
+  top: -20px;
+  left: 565px;
 
   background-color: rgba(25, 132, 155, 0.3);
   color: #FFFFFF;
@@ -188,6 +188,7 @@ img {
   opacity: 1;
   visibility: visible;
   transition-duration: 300ms;
+  z-index: 100;
 }
 .modal-title {
   font-weight: bold;
@@ -252,6 +253,7 @@ input {
   margin-bottom: 28px;
 }
 
+
 @media screen and (max-width: 1085px) {
   .title-about {
     font-weight: 600;
@@ -291,6 +293,20 @@ input {
     width: calc(100% / 2 - 15px);
     object-fit: cover;
     object-position: top;
+  }
+  .overlay-img img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    padding: 20px;
+  }
+  .modal-img {
+    position: relative;
+  }
+  .close-btn-img {
+    position: absolute;
+    top: -20px;
+    left: 190px;
   }
   
 }
